@@ -56,4 +56,12 @@ jobs:
           port: 22
           script: |            
             docker pull docker.io/${{ vars.DOCKER_IMAGE_NAME }}:latest
-            scp docker-compose.yml root@${{ secrets.PROD_HOST }}:/root/projects/chatGptBot/
+      - name: copy docker-compose.yml
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USERNAME }}
+          port: 22
+          key: ${{ secrets.PROD_KEY }}
+          source: "docker-compose.yml"
+          target: /root/projects/chatGptBot/
