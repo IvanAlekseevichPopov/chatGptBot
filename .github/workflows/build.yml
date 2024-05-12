@@ -54,5 +54,6 @@ jobs:
           username: ${{ secrets.PROD_USERNAME }}
           key: ${{ secrets.PROD_KEY }}
           port: 22
-          script: |
+          script: |            
             docker pull docker.io/${{ vars.DOCKER_IMAGE_NAME }}:latest
+            scp docker-compose.yml root@${{ secrets.PROD_HOST }}:/root/projects/chatGptBot/

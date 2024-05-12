@@ -1,6 +1,14 @@
 version: '3.2'
 
 services:
+  jvm:
+    image: docker.io/ivanpopov/chat-gpt-bot:latest
+    depends_on:
+      - db
+    env_file:
+      - .env
+    command:
+      - java -jar build/libs/bot-0.0.1-plain.jar
   db:
     image: postgres:15
     ports:
