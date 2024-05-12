@@ -1,5 +1,5 @@
 /build/
 .gradle/
-gradle/
 .env
 /frontend/
+/gradle/wrapper/gradle-wrapper.jar
