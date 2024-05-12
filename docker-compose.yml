@@ -5,6 +5,8 @@ services:
     image: docker.io/ivanpopov/chat-gpt-bot:latest
     depends_on:
       - db
+    ports:
+      - 8080:8080
     env_file:
       - .env
     command:
