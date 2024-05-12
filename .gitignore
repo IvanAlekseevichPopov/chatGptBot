@@ -1,4 +1,5 @@
-./build/
-./.gradle/
+/build/
+.gradle/
+gradle/
 .env
-./frontend/
+/frontend/
