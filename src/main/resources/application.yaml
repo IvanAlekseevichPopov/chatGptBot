@@ -1,0 +1,23 @@
+spring:
+  application.name: gpt4Bot
+  flyway:
+#    locations: filesystem:db/migration
+    user: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/${POSTGRES_DB}
+#    schemas: public
+    baseline-on-migrate: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    driverClassName: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+#      hibernate:
+#        hbm2ddl:
+#          auto: create
+        jdbc:
+          lob:
+            non_contextual_creation: true
