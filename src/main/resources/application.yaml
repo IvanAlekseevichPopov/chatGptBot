@@ -1,14 +1,13 @@
 spring:
   application.name: gpt4Bot
   flyway:
-#    locations: filesystem:db/migration
     user: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
-    url: jdbc:postgresql://localhost:5432/${POSTGRES_DB}
-#    schemas: public
+    url: ${DATABASE_URL}
+    schemas: public
     baseline-on-migrate: true
   datasource:
-    url: jdbc:postgresql://localhost:5432/${POSTGRES_DB}
+    url: ${DATABASE_URL}
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PASSWORD}
     driverClassName: org.postgresql.Driver
