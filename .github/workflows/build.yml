@@ -57,7 +57,7 @@ jobs:
           script: |
             docker pull docker.io/${{ vars.DOCKER_IMAGE_NAME }}:latest
             cd /root/projects/chatGptBot
-            podman-compose down
+            docker compose down
       - name: copy docker-compose
         uses: actions/checkout@v4
       - name: copy docker-compose.yml
@@ -80,5 +80,5 @@ jobs:
           script: |
             docker pull docker.io/${{ vars.DOCKER_IMAGE_NAME }}:latest
             cd /root/projects/chatGptBot
-            podman-compose down
-            podman-compose up -d
+            docker compose down
+            docker compose up -d
