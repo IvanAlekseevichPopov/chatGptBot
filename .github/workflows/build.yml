@@ -56,6 +56,8 @@ jobs:
 #          port: 22
 #          script: |
 #            docker pull docker.io/${{ vars.DOCKER_IMAGE_NAME }}:latest
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: copy docker-compose.yml
         uses: appleboy/scp-action@v0.1.7
         with:
