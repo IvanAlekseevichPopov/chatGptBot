@@ -47,16 +47,18 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-#      - name: get docker image
-#        uses: appleboy/ssh-action@v1.0.3
-#        with:
-#          host: ${{ secrets.PROD_HOST }}
-#          username: ${{ secrets.PROD_USERNAME }}
-#          key: ${{ secrets.PROD_KEY }}
-#          port: 22
-#          script: |
-#            docker pull docker.io/${{ vars.DOCKER_IMAGE_NAME }}:latest
-      - name: Checkout
+      - name: get docker image
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USERNAME }}
+          key: ${{ secrets.PROD_KEY }}
+          port: 22
+          script: |
+            docker pull docker.io/${{ vars.DOCKER_IMAGE_NAME }}:latest
+            cd /root/projects/chatGptBot
+            podman-compose down
+      - name: copy docker-compose
         uses: actions/checkout@v4
       - name: copy docker-compose.yml
         uses: appleboy/scp-action@v0.1.7
@@ -68,4 +70,15 @@ jobs:
           source: "./docker-compose.yml"
           target: /root/projects/chatGptBot/
           overwrite: true
-          debug: true
+      - name: up updated container
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USERNAME }}
+          key: ${{ secrets.PROD_KEY }}
+          port: 22
+          script: |
+            docker pull docker.io/${{ vars.DOCKER_IMAGE_NAME }}:latest
+            cd /root/projects/chatGptBot
+            podman-compose down
+            podman-compose up -d
