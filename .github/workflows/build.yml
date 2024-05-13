@@ -66,3 +66,4 @@ jobs:
           source: "docker-compose.yml"
           target: /root/projects/chatGptBot/
           overwrite: true
+          debug: true
