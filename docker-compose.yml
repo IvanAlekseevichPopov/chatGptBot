@@ -10,7 +10,9 @@ services:
     env_file:
       - .env
     command:
-      - java -jar build/libs/bot-0.0.1.jar
+      - java
+      - -jar
+      - build/libs/bot-0.0.1.jar
   db:
     image: postgres:15
     ports:
