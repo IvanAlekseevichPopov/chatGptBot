@@ -13,17 +13,18 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class Bot implements UpdatesListener {
+public class BotRunner implements UpdatesListener {
     private final UserRepository userRepository;
     private final TelegramBot bot;
 
     @Autowired
-    public Bot(
-            UserRepository customerRepository
+    public BotRunner(
+            UserRepository customerRepository,
+            TelegramBot bot
     ) {
 
         this.userRepository = customerRepository;
-        this.bot = new TelegramBot("6542953955:AAFZCmjfz55cCt0CYpZeKmI_-_9dj0W69H4");
+        this.bot = bot;
     }
 
     public void start() {
