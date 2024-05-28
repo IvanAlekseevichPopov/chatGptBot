@@ -1,11 +1,5 @@
 spring:
   application.name: gpt4Bot
-#  flyway:
-#    user: ${POSTGRES_USER}
-#    password: ${POSTGRES_PASSWORD}
-#    url: ${DATABASE_URL}
-#    schemas: [public]
-#    driver-class-name: org.postgresql.Driver
   datasource:
     url: ${DATABASE_URL}
     username: ${POSTGRES_USER}
@@ -13,10 +7,10 @@ spring:
     driverClassName: org.postgresql.Driver
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
-    properties:
+#    properties:
 #      hibernate:
 #        hbm2ddl:
 #          auto: create
-        jdbc:
-          lob:
-            non_contextual_creation: true
+#        jdbc:
+#          lob:
+#            non_contextual_creation: true
